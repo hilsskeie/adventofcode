@@ -14,7 +14,7 @@ XSize = []
 YSize = []
 XSqaure = []
 YSquare = []
-
+Line = []
 for i in range(len(Data)):
 	start = Data[i][2].replace(':','').split(',')
 	size = Data[i][3].split('x')
@@ -25,6 +25,7 @@ for i in range(len(Data)):
 	YStart.append(int(start[1]))
 	XSize.append(int(size[0]))
 	YSize.append(int(size[1]))
+	Line.append(int(line))
 	
 	squarex = int(start[0]) + int(size[0])
 	squarey = int(start[1]) + int(size[1])
@@ -48,3 +49,10 @@ for Lines in Matrix:
 		else:
 			pass
 print Count
+
+# part two
+
+for i in range(len(XStart)):
+	square = Matrix[XStart[i]:(XStart[i]+XSize[i]),YStart[i]:(YStart[i]+YSize[i])]
+	if 1 in square and 2 not in square:
+		print i+1
